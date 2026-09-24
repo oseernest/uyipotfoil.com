@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Uyi_Êrny - Personal Portfolio">
+<title>Uyi_Êrny | Portfolio</title>
+
+<style>
+:root{
+  --bg:#07110d;
+  --bg2:#0c1913;
+  --card:#10231a;
+  --text:#f4fff9;
+  --muted:#a9bbb2;
+  --green:#00d084;
+  --green2:#00a96b;
+  --blue:#38bdf8;
+  --border:rgba(255,255,255,.10);
+  --shadow:0 20px 60px rgba(0,0,0,.28);
+}
+
+*{margin:0;padding:0;box-sizing:border-box;scroll-behavior:smooth}
+body{
+  font-family:Arial,Helvetica,sans-serif;
+  background:
+    radial-gradient(circle at 10% 10%,rgba(0,208,132,.13),transparent 28%),
+    radial-gradient(circle at 90% 25%,rgba(56,189,248,.08),transparent 25%),
+    var(--bg);
+  color:var(--text);
+  line-height:1.6;
+}
+body.light{
+  --bg:#f4faf7;
+  --bg2:#fff;
+  --card:#fff;
+  --text:#102018;
+  --muted:#617169;
+  --border:rgba(0,0,0,.10);
+}
+a{text-decoration:none;color:inherit}
+button,input,textarea{font:inherit}
+section{padding:95px 7%}
+.container{max-width:1200px;margin:auto}
+
+/* NAVBAR */
+header{
+  position:fixed;
+  top:0;left:0;width:100%;
+  z-index:1000;
+  background:rgba(7,17,13,.82);
+  backdrop-filter:blur(16px);
+  border-bottom:1px solid var(--border);
+}
+body.light header{background:rgba(255,255,255,.85)}
+nav{
+  max-width:1250px;
+  margin:auto;
+  padding:16px 6%;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+.logo{font-size:24px;font-weight:900}
+.logo span{color:var(--green)}
+.nav-links{
+  list-style:none;
+  display:flex;
+  gap:27px;
+}
+.nav-links a{color:var(--muted);font-size:14px;transition:.25s}
+.nav-links a:hover{color:var(--green)}
+.nav-actions{display:flex;gap:8px}
+.icon-btn{
+  width:42px;height:42px;border-radius:50%;
+  border:1px solid var(--border);
+  background:var(--card);
+  color:var(--text);
+  cursor:pointer;
+}
+.menu-btn{display:none}
+
+/* BUTTONS */
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding:13px 21px;
+  border-radius:10px;
+  border:1px solid transparent;
+  cursor:pointer;
+  font-weight:700;
+  transition:.25s;
+}
+.btn-primary{background:var(--green);color:#03120b}
+.btn-primary:hover{transform:translateY(-3px);box-shadow:0 12px 30px rgba(0,208,132,.25)}
+.btn-outline{border-color:var(--border);color:var(--text);background:transparent}
+.btn-outline:hover{border-color:var(--green);color:var(--green)}
+
+/* HERO */
+.hero{min-height:100vh;padding-top:140px;display:flex;align-items:center}
+.hero-grid{
+  display:grid;
+  grid-template-columns:1.15fr .85fr;
+  gap:70px;
+  align-items:center;
+}
+.badge{
+  display:inline-block;
+  padding:8px 14px;
+  border-radius:30px;
+  color:var(--green);
+  background:rgba(0,208,132,.08);
+  border:1px solid rgba(0,208,132,.25);
+  font-size:13px;
+  margin-bottom:22px;
+}
+.hero h1{
+  font-size:clamp(50px,8vw,90px);
+  line-height:.95;
+  letter-spacing:-5px;
+}
+.hero h1 span{color:var(--green)}
+.typing{
+  color:var(--blue);
+  font-size:22px;
+  font-weight:700;
+  margin:22px 0 14px;
+  min-height:34px;
+}
+.hero p{max-width:650px;color:var(--muted);font-size:17px;margin-bottom:28px}
+.hero-buttons{display:flex;gap:12px;flex-wrap:wrap}
+.profile-card{
+  min-height:480px;
+  border:1px solid var(--border);
+  border-radius:35px;
+  background:
+    radial-gradient(circle at center,rgba(0,208,132,.17),transparent 45%),
+    var(--card);
+  box-shadow:var(--shadow);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  position:relative;
+  overflow:hidden;
+}
+.avatar{
+  width:220px;height:220px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  border:4px solid var(--green);
+  color:var(--green);
+  font-size:62px;font-weight:900;
+  background:#07140e;
+  box-shadow:0 0 70px rgba(0,208,132,.2);
+}
+.float{
+  position:absolute;
+  padding:11px 15px;
+  border-radius:12px;
+  border:1px solid var(--border);
+  background:rgba(5,18,12,.86);
+  font-size:13px;
+  animation:float 4s ease-in-out infinite;
+}
+.float.one{top:20%;left:6%}
+.float.two{right:6%;bottom:20%;animation-delay:1s}
+@keyframes float{50%{transform:translateY(-12px)}}
+
+/* HEADINGS */
+.section-title{margin-bottom:50px}
+.section-title small{
+  color:var(--green);
+  letter-spacing:3px;
+  font-weight:800;
+  text-transform:uppercase;
+}
+.section-title h2{
+  font-size:clamp(34px,5vw,58px);
+  line-height:1.05;
+  margin:9px 0 12px;
+  letter-spacing:-2px;
+}
+.section-title p{color:var(--muted);max-width:680px}
+
+/* ABOUT */
+.about-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:30px;
+}
+.box{
+  border:1px solid var(--border);
+  background:var(--card);
+  border-radius:24px;
+  padding:32px;
+}
+.box h3{font-size:27px;margin-bottom:12px}
+.box p{color:var(--muted);margin-bottom:14px}
+.info-list{margin-top:20px}
+.info{
+  display:flex;
+  justify-content:space-between;
+  gap:20px;
+  padding:13px 0;
+  border-bottom:1px solid var(--border);
+}
+.info span{color:var(--muted)}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.stat{
+  text-align:center;
+  padding:30px 15px;
+  border:1px solid var(--border);
+  border-radius:20px;
+  background:var(--card);
+}
+.stat strong{display:block;color:var(--green);font-size:42px}
+.stat span{color:var(--muted)}
+
+/* SKILLS */
+.skills{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:20px;
+}
+.skill{
+  padding:25px;
+  border:1px solid var(--border);
+  border-radius:18px;
+  background:var(--card);
+}
+.skill-head{display:flex;justify-content:space-between;margin-bottom:10px}
+.skill-head span{color:var(--green)}
+.bar{height:8px;background:rgba(255,255,255,.08);border-radius:10px;overflow:hidden}
+.fill{height:100%;width:0;background:linear-gradient(90deg,var(--green),var(--blue));transition:1.2s}
+
+/* SERVICES */
+.cards{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:20px;
+}
+.card{
+  padding:30px;
+  border:1px solid var(--border);
+  border-radius:22px;
+  background:var(--card);
+  transition:.25s;
+}
+.card:hover{transform:translateY(-7px);border-color:rgba(0,208,132,.4)}
+.icon{
+  width:55px;height:55px;border-radius:14px;
+  background:rgba(0,208,132,.10);
+  display:flex;align-items:center;justify-content:center;
+  font-size:25px;margin-bottom:20px;
+}
+.card p{color:var(--muted);font-size:14px;margin-top:8px}
+
+/* PROJECTS */
+.projects{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:22px;
+}
+.project{
+  overflow:hidden;
+  border:1px solid var(--border);
+  border-radius:22px;
+  background:var(--card);
+  transition:.25s;
+}
+.project:hover{transform:translateY(-7px)}
+.project-image{
+  height:190px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:58px;
+  background:radial-gradient(circle,rgba(0,208,132,.18),transparent 60%),#0b1b13;
+}
+.project-body{padding:24px}
+.project-body p{color:var(--muted);font-size:14px;margin:8px 0 16px}
+.tags{display:flex;flex-wrap:wrap;gap:7px}
+.tag{
+  color:var(--green);
+  background:rgba(0,208,132,.08);
+  padding:5px 9px;
+  border-radius:20px;
+  font-size:11px;
+}
+
+/* TIMELINE */
+.timeline{max-width:850px;margin:auto;position:relative}
+.timeline:before{
+  content:"";position:absolute;left:10px;top:0;bottom:0;width:2px;background:var(--border)
+}
+.event{position:relative;padding-left:48px;margin-bottom:42px}
+.dot{
+  position:absolute;left:0;top:5px;
+  width:22px;height:22px;border-radius:50%;
+  background:var(--green);
+  box-shadow:0 0 0 6px rgba(0,208,132,.12)
+}
+.event small{color:var(--green);font-weight:800}
+.event h3{font-size:22px;margin:4px 0}
+.event p{color:var(--muted)}
+
+/* TESTIMONIAL */
+.testimonial{
+  max-width:850px;
+  margin:auto;
+  text-align:center;
+  padding:45px;
+  border:1px solid var(--border);
+  border-radius:25px;
+  background:var(--card);
+}
+.quote{font-size:60px;color:var(--green);line-height:.8}
+#testimonialText{font-size:22px;margin:20px 0}
+#testimonialAuthor{color:var(--muted)}
+
+/* CONTACT */
+.contact{
+  display:grid;
+  grid-template-columns:.8fr 1.2fr;
+  gap:25px;
+}
+.contact p{color:var(--muted)}
+.contact-item{
+  display:flex;
+  gap:14px;
+  align-items:center;
+  margin-top:22px;
+}
+.contact-icon{
+  width:45px;height:45px;border-radius:12px;
+  display:flex;align-items:center;justify-content:center;
+  background:rgba(0,208,132,.1)
+}
+.form{display:grid;gap:16px}
+label{font-size:13px;color:var(--muted)}
+.field{display:grid;gap:7px}
+input,textarea{
+  width:100%;
+  padding:14px 15px;
+  border-radius:10px;
+  border:1px solid var(--border);
+  background:rgba(255,255,255,.04);
+  color:var(--text);
+  outline:none;
+}
+input:focus,textarea:focus{border-color:var(--green)}
+textarea{min-height:150px;resize:vertical}
+
+/* FOOTER */
+footer{
+  border-top:1px solid var(--border);
+  padding:45px 7% 25px;
+}
+.footer{
+  display:flex;justify-content:space-between;gap:30px;flex-wrap:wrap
+}
+.footer p{color:var(--muted);max-width:420px;margin-top:10px}
+.socials{display:flex;gap:9px;margin-top:18px}
+.social{
+  width:40px;height:40px;border:1px solid var(--border);
+  border-radius:50%;display:flex;align-items:center;justify-content:center;
+  color:var(--muted)
+}
+.social:hover{color:var(--green);border-color:var(--green)}
+.copy{
+  border-top:1px solid var(--border);
+  margin-top:30px;padding-top:20px;
+  text-align:center;color:var(--muted);font-size:13px
+}
+
+/* ANIMATION */
+.reveal{opacity:0;transform:translateY(25px);transition:.7s}
+.reveal.show{opacity:1;transform:none}
+
+/* TOP */
+#top{
+  position:fixed;right:20px;bottom:20px;
+  width:45px;height:45px;border:0;border-radius:50%;
+  background:var(--green);color:#03120b;
+  cursor:pointer;font-size:19px;display:none;z-index:900
+}
+
+/* MOBILE */
+@media(max-width:900px){
+  .nav-links{
+    position:fixed;top:74px;left:0;width:100%;
+    padding:25px;display:flex;flex-direction:column;
+    background:var(--bg2);border-bottom:1px solid var(--border);
+    transform:translateY(-140%);transition:.3s
+  }
+  .nav-links.open{transform:translateY(0)}
+  .menu-btn{display:block}
+  .hero-grid,.about-grid,.contact{grid-template-columns:1fr}
+  .profile-card{max-width:550px;margin:auto}
+  .cards,.projects{grid-template-columns:1fr 1fr}
+}
+@media(max-width:600px){
+  section{padding:75px 6%}
+  .hero{padding-top:115px}
+  .hero h1{letter-spacing:-3px}
+  .skills,.cards,.projects{grid-template-columns:1fr}
+  .stats{grid-template-columns:1fr 1fr}
+  .profile-card{min-height:370px}
+  .avatar{width:170px;height:170px;font-size:48px}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<nav>
+  <a class="logo" href="#home">Uyi<span>_Êrny</span></a>
+
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#home">Home</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#journey">Journey</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+
+  <div class="nav-actions">
+    <button class="icon-btn" id="themeBtn" aria-label="Toggle theme">☀</button>
+    <button class="icon-btn menu-btn" id="menuBtn" aria-label="Open menu">☰</button>
+  </div>
+</nav>
+</header>
+
+<main>
+
+<section class="hero" id="home">
+<div class="container hero-grid">
+  <div class="reveal">
+    <span class="badge">● Welcome to my portfolio</span>
+
+    <h1>Hi, I'm<br><span>Uyi_Êrny</span></h1>
+
+    <div class="typing" id="typing"></div>
+
+    <p>
+      I'm a creative technology enthusiast who enjoys building websites,
+      exploring digital design and turning ideas into useful online experiences.
+    </p>
+
+    <div class="hero-buttons">
+      <a class="btn btn-primary" href="#projects">View My Work →</a>
+      <a class="btn btn-outline" href="#contact">Contact Me</a>
+    </div>
+  </div>
+
+  <div class="profile-card reveal">
+    <div class="avatar">UÊ</div>
+    <div class="float one">💻 Web Developer</div>
+    <div class="float two">🚀 Creative Thinker</div>
+  </div>
+</div>
+</section>
+
+<section id="about">
+<div class="container">
+  <div class="section-title reveal">
+    <small>01 — About Me</small>
+    <h2>Ideas into digital experiences.</h2>
+    <p>A demo biography that you can replace with your real information.</p>
+  </div>
+
+  <div class="about-grid">
+    <div class="box reveal">
+      <h3>Hello, I'm Uyi_Êrny.</h3>
+      <p>
+        I am passionate about technology, web development, creative design
+        and learning new digital skills.
+      </p>
+      <p>
+        I enjoy experimenting with ideas and turning them into clean,
+        modern and interactive websites.
+      </p>
+
+      <div class="info-list">
+        <div class="info"><span>Name</span><strong>Uyi_Êrny</strong></div>
+        <div class="info"><span>Location</span><strong>Nigeria</strong></div>
+        <div class="info"><span>Focus</span><strong>Web Development</strong></div>
+        <div class="info"><span>Status</span><strong>Available</strong></div>
+      </div>
+    </div>
+
+    <div class="stats reveal">
+      <div class="stat"><strong>25+</strong><span>Demo Projects</span></div>
+      <div class="stat"><strong>10+</strong><span>Skills</span></div>
+      <div class="stat"><strong>3+</strong><span>Years Learning</span></div>
+      <div class="stat"><strong>100%</strong><span>Curiosity</span></div>
+    </div>
+  </div>
+</div>
+</section>
+
+<section id="skills">
+<div class="container">
+  <div class="section-title reveal">
+    <small>02 — Skills</small>
+    <h2>Things I enjoy learning.</h2>
+    <p>Demo percentages. Change them to your real skill levels.</p>
+  </div>
+
+  <div class="skills">
+    <div class="skill reveal"><div class="skill-head"><b>HTML</b><span>95%</span></div><div class="bar"><div class="fill" data-width="95%"></div></div></div>
+    <div class="skill reveal"><div class="skill-head"><b>CSS</b><span>90%</span></div><div class="bar"><div class="fill" data-width="90%"></div></div></div>
+    <div class="skill reveal"><div class="skill-head"><b>JavaScript</b><span>80%</span></div><div class="bar"><div class="fill" data-width="80%"></div></div></div>
+    <div class="skill reveal"><div class="skill-head"><b>Python</b><span>75%</span></div><div class="bar"><div class="fill" data-width="75%"></div></div></div>
+    <div class="skill reveal"><div class="skill-head"><b>UI Design</b><span>85%</span></div><div class="bar"><div class="fill" data-width="85%"></div></div></div>
+    <div class="skill reveal"><div class="skill-head"><b>Graphic Design</b><span>78%</span></div><div class="bar"><div class="fill" data-width="78%"></div></div></div>
+  </div>
+</div>
+</section>
+
+<section id="services">
+<div class="container">
+  <div class="section-title reveal">
+    <small>03 — Services</small>
+    <h2>What I can create.</h2>
+    <p>Demo services for the portfolio.</p>
+  </div>
+
+  <div class="cards">
+    <div class="card reveal"><div class="icon">💻</div><h3>Web Development</h3><p>Modern responsive websites using HTML, CSS and JavaScript.</p></div>
+    <div class="card reveal"><div class="icon">🎨</div><h3>UI Design</h3><p>Clean interfaces designed for simple and enjoyable experiences.</p></div>
+    <div class="card reveal"><div class="icon">📱</div><h3>Responsive Design</h3><p>Websites that work across phones, tablets and computers.</p></div>
+    <div class="card reveal"><div class="icon">⚡</div><h3>Performance</h3><p>Lightweight pages focused on speed and usability.</p></div>
+    <div class="card reveal"><div class="icon">🧠</div><h3>Creative Ideas</h3><p>Turning concepts and ideas into digital projects.</p></div>
+    <div class="card reveal"><div class="icon">🔧</div><h3>Website Updates</h3><p>Improving existing websites with new sections and features.</p></div>
+  </div>
+</div>
+</section>
+
+<section id="projects">
+<div class="container">
+  <div class="section-title reveal">
+    <small>04 — Projects</small>
+    <h2>Featured work.</h2>
+    <p>Demo projects that can later be replaced by your real work.</p>
+  </div>
+
+  <div class="projects">
+    <article class="project reveal">
+      <div class="project-image">🏠</div>
+      <div class="project-body"><h3>Modern Home Website</h3><p>A responsive property website concept.</p><div class="tags"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JS</span></div></div>
+    </article>
+
+    <article class="project reveal">
+      <div class="project-image">🛒</div>
+      <div class="project-body"><h3>Mini E-Commerce</h3><p>A demo online store interface.</p><div class="tags"><span class="tag">JavaScript</span><span class="tag">UI</span></div></div>
+    </article>
+
+    <article class="project reveal">
+      <div class="project-image">🎮</div>
+      <div class="project-body"><h3>Browser Game</h3><p>An experimental interactive browser game.</p><div class="tags"><span class="tag">JS</span><span class="tag">Game</span></div></div>
+    </article>
+
+    <article class="project reveal">
+      <div class="project-image">🍹</div>
+      <div class="project-body"><h3>Juice Brand</h3><p>A product presentation website concept.</p><div class="tags"><span class="tag">Branding</span><span class="tag">Web</span></div></div>
+    </article>
+
+    <article class="project reveal">
+      <div class="project-image">📚</div>
+      <div class="project-body"><h3>Learning Platform</h3><p>A demo educational website concept.</p><div class="tags"><span class="tag">Education</span><span class="tag">UI</span></div></div>
+    </article>
+
+    <article class="project reveal">
+      <div class="project-image">🚀</div>
+      <div class="project-body"><h3>Startup Landing Page</h3><p>A modern technology startup landing page.</p><div class="tags"><span class="tag">Landing</span><span class="tag">CSS</span></div></div>
+    </article>
+  </div>
+</div>
+</section>
+
+<section id="journey">
+<div class="container">
+  <div class="section-title reveal">
+    <small>05 — Journey</small>
+    <h2>My learning journey.</h2>
+    <p>Demo timeline you can customize.</p>
+  </div>
+
+  <div class="timeline">
+    <div class="event reveal"><div class="dot"></div><small>2026 — Present</small><h3>Creative Web Developer</h3><p>Building personal projects and exploring modern web development.</p></div>
+    <div class="event reveal"><div class="dot"></div><small>2025 — 2026</small><h3>Frontend Development</h3><p>Focused on HTML, CSS, JavaScript and responsive design.</p></div>
+    <div class="event reveal"><div class="dot"></div><small>2024 — 2025</small><h3>Started Web Design</h3><p>Learned the fundamentals of creating websites and interfaces.</p></div>
+    <div class="event reveal"><div class="dot"></div><small>The Beginning</small><h3>Curiosity</h3><p>Started exploring technology by experimenting and creating small projects.</p></div>
+  </div>
+</div>
+</section>
+
+<section>
+<div class="container">
+  <div class="testimonial reveal">
+    <div class="quote">“</div>
+    <p id="testimonialText">Uyi_Êrny brought creativity and energy to the project and was always willing to learn something new.</p>
+    <p id="testimonialAuthor">— Demo Client</p>
+    <br>
+    <button class="btn btn-outline" id="nextTestimonial">Next Testimonial</button>
+  </div>
+</div>
+</section>
+
+<section id="contact">
+<div class="container">
+  <div class="section-title reveal">
+    <small>06 — Contact</small>
+    <h2>Let's build something.</h2>
+    <p>These are demo contact details. Replace them with your real details.</p>
+  </div>
+
+  <div class="contact">
+    <div class="box reveal">
+      <h3>Get in touch</h3>
+      <p>For projects, collaborations or questions, use the details below.</p>
+
+      <div class="contact-item"><div class="contact-icon">📧</div><div><b>Email</b><br><span>uyi.erny@example.com</span></div></div>
+      <div class="contact-item"><div class="contact-icon">📱</div><div><b>Phone</b><br><span>+234 800 000 0000</span></div></div>
+      <div class="contact-item"><div class="contact-icon">📍</div><div><b>Location</b><br><span>Nigeria</span></div></div>
+      <div class="contact-item"><div class="contact-icon">🕒</div><div><b>Availability</b><br><span>Monday — Saturday</span></div></div>
+    </div>
+
+    <div class="box reveal">
+      <form class="form" id="contactForm">
+        <div class="field"><label>Name</label><input id="name" required placeholder="Your name"></div>
+        <div class="field"><label>Email</label><input id="email" type="email" required placeholder="you@example.com"></div>
+        <div class="field"><label>Subject</label><input id="subject" required placeholder="Project subject"></div>
+        <div class="field"><label>Message</label><textarea id="message" required placeholder="Write your message..."></textarea></div>
+        <button class="btn btn-primary" type="submit">Send Message →</button>
+      </form>
+    </div>
+  </div>
+</div>
+</section>
+
+</main>
+
+<footer>
+<div class="container footer">
+  <div>
+    <a class="logo" href="#home">Uyi<span>_Êrny</span></a>
+    <p>Creating, learning and building one project at a time.</p>
+    <div class="socials">
+      <a class="social" href="#" aria-label="Facebook">f</a>
+      <a class="social" href="#" aria-label="X">𝕏</a>
+      <a class="social" href="#" aria-label="LinkedIn">in</a>
+      <a class="social" href="#" aria-label="Instagram">◎</a>
+    </div>
+  </div>
+
+  <div>
+    <b>Quick Links</b><br><br>
+    <a href="#about">About</a><br>
+    <a href="#projects">Projects</a><br>
+    <a href="#contact">Contact</a>
+  </div>
+
+  <div>
+    <b>Explore</b><br><br>
+    <a href="#skills">Skills</a><br>
+    <a href="#services">Services</a><br>
+    <a href="#journey">Journey</a>
+  </div>
+</div>
+
+<div class="container copy">
+  © <span id="year"></span> Uyi_Êrny. All rights reserved.
+</div>
+</footer>
+
+<button id="top" aria-label="Back to top">↑</button>
+
+<script>
+/* Mobile navigation */
+const menuBtn = document.getElementById("menuBtn");
+const navLinks = document.getElementById("navLinks");
+
+menuBtn.addEventListener("click", () => {
+  navLinks.classList.toggle("open");
+});
+
+document.querySelectorAll(".nav-links a").forEach(link => {
+  link.addEventListener("click", () => navLinks.classList.remove("open"));
+});
+
+/* Theme */
+const themeBtn = document.getElementById("themeBtn");
+
+if(localStorage.getItem("uyi-theme") === "light"){
+  document.body.classList.add("light");
+  themeBtn.textContent = "🌙";
+}
+
+themeBtn.addEventListener("click", () => {
+  document.body.classList.toggle("light");
+  const light = document.body.classList.contains("light");
+  themeBtn.textContent = light ? "🌙" : "☀";
+  localStorage.setItem("uyi-theme", light ? "light" : "dark");
+});
+
+/* Typing effect */
+const words = [
+  "Web Developer",
+  "Creative Designer",
+  "Problem Solver",
+  "Technology Explorer",
+  "Future Builder"
+];
+
+let word = 0;
+let char = 0;
+let deleting = false;
+
+function type(){
+  const el = document.getElementById("typing");
+  const current = words[word];
+
+  if(!deleting){
+    el.textContent = current.substring(0,char + 1);
+    char++;
+
+    if(char === current.length){
+      deleting = true;
+      setTimeout(type,1200);
+      return;
+    }
+  }else{
+    el.textContent = current.substring(0,char - 1);
+    char--;
+
+    if(char === 0){
+      deleting = false;
+      word = (word + 1) % words.length;
+    }
+  }
+
+  setTimeout(type, deleting ? 55 : 90);
+}
+type();
+
+/* Scroll reveal */
+const reveal = document.querySelectorAll(".reveal");
+
+function revealOnScroll(){
+  reveal.forEach(el => {
+    if(el.getBoundingClientRect().top < window.innerHeight - 60){
+      el.classList.add("show");
+    }
+  });
+}
+window.addEventListener("scroll", revealOnScroll);
+revealOnScroll();
+
+/* Skill bars */
+let skillsDone = false;
+
+function animateSkills(){
+  if(skillsDone) return;
+
+  const section = document.getElementById("skills");
+  if(section.getBoundingClientRect().top < window.innerHeight - 80){
+    document.querySelectorAll(".fill").forEach(bar => {
+      bar.style.width = bar.dataset.width;
+    });
+    skillsDone = true;
+  }
+}
+window.addEventListener("scroll", animateSkills);
+
+/* Testimonials */
+const testimonials = [
+  ["Uyi_Êrny brought creativity and energy to the project and was always willing to learn something new.","— Demo Client"],
+  ["The interface was simple, modern and enjoyable to use.","— Demo Project Manager"],
+  ["A curious developer with a strong interest in technology and creative projects.","— Demo Mentor"]
+];
+
+let testimonialIndex = 0;
+
+document.getElementById("nextTestimonial").addEventListener("click", () => {
+  testimonialIndex = (testimonialIndex + 1) % testimonials.length;
+  document.getElementById("testimonialText").textContent = testimonials[testimonialIndex][0];
+  document.getElementById("testimonialAuthor").textContent = testimonials[testimonialIndex][1];
+});
+
+/* Contact form */
+document.getElementById("contactForm").addEventListener("submit", function(e){
+  e.preventDefault();
+
+  const name = document.getElementById("name").value.trim();
+
+  alert("Thank you, " + name + "! This demo form is working. Connect it to a backend or email service to receive real messages.");
+
+  this.reset();
+});
+
+/* Back to top */
+const topButton = document.getElementById("top");
+
+window.addEventListener("scroll", () => {
+  topButton.style.display = window.scrollY > 500 ? "block" : "none";
+});
+
+topButton.addEventListener("click", () => {
+  window.scrollTo({top:0,behavior:"smooth"});
+});
+
+/* Year */
+document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
